@@ -1,0 +1,21 @@
+{
+  "name": "flexiele-mcp",
+  "version": "1.0.0",
+  "description": "MCP server for Flexiele HRMS - org hierarchy and employee data",
+  "type": "module",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "tsc && node dist/index.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.12.1",
+    "crypto-js": "^4.2.0"
+  },
+  "devDependencies": {
+    "@types/crypto-js": "^4.2.2",
+    "@types/node": "^22.15.3",
+    "typescript": "^5.8.3"
+  }
+}
