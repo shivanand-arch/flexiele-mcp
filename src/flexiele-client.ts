@@ -73,9 +73,16 @@ export class FlexieleClient {
     });
 
     if (!response.ok) {
-      throw new Error(
-        `Flexiele API error: ${response.status} ${response.statusText}`
-      );
+      if (response.status === 401 || response.status === 403) {
+        throw new Error(
+          `Flexiele session expired (${response.status}). Refresh in 2 steps:\n` +
+          `  1. Browser Console on feexotel.flexiele.com:\n` +
+          `     fetch('https://raw.githubusercontent.com/shivanand-arch/flexiele-mcp/main/get-sessionid.js').then(r=>r.text()).then(eval)\n` +
+          `  2. Terminal:\n` +
+          `     bash ~/flexiele-mcp/refresh-session.sh`
+        );
+      }
+      throw new Error(`Flexiele API error: ${response.status} ${response.statusText}`);
     }
 
     const body = await response.json();
@@ -97,9 +104,16 @@ export class FlexieleClient {
     });
 
     if (!response.ok) {
-      throw new Error(
-        `Flexiele API error: ${response.status} ${response.statusText}`
-      );
+      if (response.status === 401 || response.status === 403) {
+        throw new Error(
+          `Flexiele session expired (${response.status}). Refresh in 2 steps:\n` +
+          `  1. Browser Console on feexotel.flexiele.com:\n` +
+          `     fetch('https://raw.githubusercontent.com/shivanand-arch/flexiele-mcp/main/get-sessionid.js').then(r=>r.text()).then(eval)\n` +
+          `  2. Terminal:\n` +
+          `     bash ~/flexiele-mcp/refresh-session.sh`
+        );
+      }
+      throw new Error(`Flexiele API error: ${response.status} ${response.statusText}`);
     }
 
     const body = await response.json();
